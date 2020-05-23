@@ -1,11 +1,15 @@
 import React from 'react';
-
+import Question from './components/Question';
 
 function App() {
   return (
     <div className="container">
         <header>
-          <h1>weekly expense</h1>
+          <h1>Weekly expense</h1>
+          
+          <div className="content-main content">
+              <Question />
+          </div>
         </header>
     </div>
   );
