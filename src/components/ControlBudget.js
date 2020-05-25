@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { reviewBudget } from '../helpers';
 
 const ControlBudget = ({budget, remaining}) => {
@@ -13,6 +14,12 @@ const ControlBudget = ({budget, remaining}) => {
 
         </Fragment>
      );
+}
+
+//Documenting the app
+ControlBudget.propTypes = {
+    budget: PropTypes.number.isRequired,
+    remaining: PropTypes.number.isRequired
 }
  
 export default ControlBudget;
