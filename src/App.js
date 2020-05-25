@@ -8,6 +8,7 @@ function App() {
   //define the state - hooks
   const [ budget, saveBudget ] = useState(0); 
   const [ remaining, saveRemaining ] = useState(0);
+  const [ showQuestion, updateQuestion ] = useState(true);
 
   return (
     <div className="container">
@@ -15,19 +16,25 @@ function App() {
           <h1>Weekly expense</h1>
           
           <div className="content-main content">
-              <Question
-                  saveBudget={saveBudget}
-                  saveRemaining={saveRemaining}
-              />
-
-              <div className="row">
+            { showQuestion ? 
+              ( 
+                <Question
+                    saveBudget={saveBudget}
+                    saveRemaining={saveRemaining}
+                    updateQuestion={updateQuestion}
+                />
+              ) : 
+              (
+                <div className="row">
                   <div className="one-half column">
                     <Form />
                   </div>
                   <div className="one-half column">
                     2
                   </div>
-              </div>
+                </div>
+              )  
+            }
 
           </div>
         </header>
