@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import Error from './Error';
 
 const Form = () => {
 
     //states - Hooks
     const [name, saveName] = useState('');
     const [amount, saveAmount] = useState(0);
-
+    const [error, saveError] = useState(false);
     
     //when the user add an expense
     const addExpense = e => {
         e.preventDefault();
         
         //validate
+        if (amount < 1 || isNaN(amount) || name.trim() === '') {
+            saveError(true);
+            return;
+        }
+        saveError(false);
 
         //build an expense
 
@@ -26,6 +32,10 @@ const Form = () => {
             onSubmit={addExpense}
         >
             <h2>Add your expenses here</h2>
+
+            { error ? <Error message="Both fields are obligatory or the budget is incorrect" /> 
+                    : null 
+            }
 
             <div className="campo">
                 <label>Name expense</label>
