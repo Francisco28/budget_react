@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Error from './Error';
-import showid from 'shortid';
 import shortid from 'shortid';
 
-const Form = () => {
+const Form = ({addNewExpense}) => {
 
     //states - Hooks
     const [name, saveName] = useState('');
@@ -28,10 +27,13 @@ const Form = () => {
             amount,
             id: shortid.generate()
         }
-        console.log(expense);
+        
         //pass the expense to main component
+        addNewExpense(expense);
 
         //reset the form
+        saveName('');
+        saveAmount(0);
     }
     
 
